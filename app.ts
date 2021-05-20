@@ -1,4 +1,5 @@
 import express from 'express';
+import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as dotenv from "dotenv";
 import {User_props} from "./src/users/user_queries";
@@ -9,7 +10,9 @@ const app: express.Application = express();
 const port = 3000;
 const httpServer = http.createServer(app);
 
-app.post('/', (req)=>{
+app.use(bodyParser.json());
+
+app.post('/', (req: express.Request)=>{
     let data = new User_props(req.body.user);
     console.log(data.get_user_info());
 })

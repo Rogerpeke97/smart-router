@@ -7,10 +7,10 @@ export class User_props{
     constructor(user: string){
         this.user = user;
         this.pool = new Pool({
-            user: process.env.PGUSER,
-            host: process.env.PGHOST,
-            database: process.env.PGDATABASE,
-            password: process.env.PGPASSWORD,
+            user: process.env.DB_USER,
+            host: process.env.DB_HOST,
+            database: process.env.DB_DATABASE,
+            password: process.env.DATABASE_PASSWORD,
             port: 5432
         });
         this.assign_values();
@@ -19,7 +19,7 @@ export class User_props{
         return this.user;
     }
     assign_values(){
-        this.pool.query(`SELECT find_user(${this.user})`, (err, res) => {
+        this.pool.query('SELECT find_user($1::text)', [`${this.user}`], (err, res) => {
             if(err){
                 console.log(err);
             }
