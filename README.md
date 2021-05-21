@@ -38,4 +38,4 @@ The last benefit can be most interesting for sophisticated traders with solid ex
 [@Ignacio](https://github.com/Rogerpeke97)
 ## License
 
-This project is licensed under the MIT LICENSE License - see the LICENSE file for details
+This project is licensed under the MIT LICENSE - see the LICENSE file for details
