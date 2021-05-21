@@ -33,13 +33,6 @@ The last benefit can be most interesting for sophisticated traders with solid ex
 ### Executing program
 
 * Run `npm run start` to start the server in your localhost after installing all the dependencies
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
 ## Authors
 
 [@Ignacio](https://github.com/Rogerpeke97)
