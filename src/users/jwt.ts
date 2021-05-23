@@ -17,7 +17,7 @@ export class Jwt{
             }
             else{
                 console.log(decoded);
-                this.decoded_user = (decoded as Decoded);
+                this.decoded_user = decoded as Decoded;
                 is_valid = true;
             }
           });

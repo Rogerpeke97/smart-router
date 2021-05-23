@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as dotenv from "dotenv";
 import {User_props} from "./src/users/user";
+import {Okex} from "./src/okex_api/okex_api";
 
 dotenv.config();
 
@@ -27,8 +28,15 @@ app.post('/create_user', (req: express.Request, res: express.Response)=>{
     data.create_user(req.body, res);
 });
 
-app.get('', ()=>{
-
+app.get('/verify_api', (req: express.Request, res: express.Response)=>{
+    if(req.headers.authorization && req.headers.apikey){
+        let data = new User_props();
+        data.authenticate(res, req.headers.authorization);
+        new Okex(req.body, req.headers.apikey as string)
+    }
+    else{
+        res.send('No JWT provided');
+    }
 });
 
 

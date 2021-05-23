@@ -4,8 +4,7 @@ import {Jwt} from './jwt';
 
 
 export class User_props extends Jwt{
-    pool: Pool;
-    app: express.Application;
+    private pool: Pool;
     constructor(){
         super();
         this.pool = new Pool({
@@ -15,7 +14,6 @@ export class User_props extends Jwt{
             password: process.env.DATABASE_PASSWORD,
             port: 5432,
         });
-        this.app = express();
     }
     get_user_data(response: express.Response, jwt: string){
         if(this.validate(response, jwt)){
@@ -40,5 +38,15 @@ export class User_props extends Jwt{
             }
             this.pool.end()
         });
+    }
+    authenticate(response: express.Response, jwt: string){
+        if(this.validate(response, jwt)){
+            this.pool.query('SELECT * FROM find_user($1)', [this.decoded_user.data], (err, res) => {
+                if(err){
+                    response.send('User not found');
+                }
+                this.pool.end();
+            });
+        }  
     }
 }
