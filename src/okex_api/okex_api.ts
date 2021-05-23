@@ -2,7 +2,7 @@ import {Pool } from 'pg';
 import express, { json } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 
-export class User_props{
+export class okex{
     user: string;
     pool: Pool;
     data: JSON;
