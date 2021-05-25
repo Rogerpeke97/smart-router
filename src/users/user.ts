@@ -49,4 +49,7 @@ export class User_props extends Jwt{
             });
         }  
     }
+    login(){
+        
+    }
 }
