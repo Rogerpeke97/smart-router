@@ -8,7 +8,7 @@ import {Okex_requests} from "./src/okex_api/okex_api_requests";
 dotenv.config();
 
 const app: express.Application = express();
-const port = 3000;
+const port = 8080;
 const httpServer = http.createServer(app);
 
 app.use(bodyParser.json());
@@ -31,7 +31,7 @@ app.post('/create_user', (req: express.Request, res: express.Response)=>{
 app.get('/verify_api', (req: express.Request, res: express.Response)=>{
     if(req.headers.authorization && req.headers.secretkey){
         let data = new User_props();
-        data.authenticate(res, req.headers.authorization);
+        // data.authenticate(res, req.headers.authorization);
         let okex = new Okex_requests(req.body, req.headers.secretkey as string);
         okex.verify_login();
     }
